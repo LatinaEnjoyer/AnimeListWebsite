@@ -1,4 +1,4 @@
-import {getAnimeList} from "./api.js";
+import {createAnime, getAnimeList} from "./api.js";
 
 document.addEventListener("DOMContentLoaded", initApp);
 
@@ -15,29 +15,18 @@ async function displayAnimes() {
     const animeList = await getAnimeList();
 
     animeList.forEach(anime => {
-        if (!animesGroupedByStatus[anime.status]) {
-            animesGroupedByStatus[anime.status] = [anime];
-        } else {
-            animesGroupedByStatus[anime.status].push(anime);
-        }
-
+        updateAnimesGroupedByStatus(anime);
         renderAnime(anime)
     });
-    Object.keys(animesGroupedByStatus).forEach(status => {
-        const div = document.createElement("div");
-        div.classList.add("stats-container");
+    renderStats();
+}
 
-        const spanText = document.createElement("span");
-        spanText.textContent = `${formatEnum(status)}:`;
-
-        const spanAmount = document.createElement("span");
-        spanAmount.textContent = animesGroupedByStatus[status].length;
-
-        div.appendChild(spanText);
-        div.appendChild(spanAmount);
-        statsSection.appendChild(div);
-    });
-    document.querySelector("#total-amount").textContent = animeList.length;
+function updateAnimesGroupedByStatus(anime) {
+    if (!animesGroupedByStatus[anime.status]) {
+        animesGroupedByStatus[anime.status] = [anime];
+    } else {
+        animesGroupedByStatus[anime.status].push(anime);
+    }
 }
 
 function renderAnime(anime) {
@@ -63,6 +52,63 @@ function renderAnime(anime) {
     </article>`;
 
     animeListUl.appendChild(li);
+}
+
+function renderStats() {
+    statsSection.innerHTML = "";
+    let totalAnimes = 0;
+    Object.keys(animesGroupedByStatus).forEach(status => {
+        const div = document.createElement("div");
+        div.classList.add("stats-container");
+
+        const spanText = document.createElement("span");
+        spanText.textContent = `${formatEnum(status)}:`;
+
+        const spanAmount = document.createElement("span");
+        spanAmount.textContent = animesGroupedByStatus[status].length;
+        totalAnimes += animesGroupedByStatus[status].length;
+
+        div.appendChild(spanText);
+        div.appendChild(spanAmount);
+        statsSection.appendChild(div);
+    });
+    const div = document.createElement("div");
+    div.classList.add("stats-container");
+
+    const spanText = document.createElement("span");
+    spanText.textContent = `Total amount:`
+
+    const spanAmount = document.createElement("span");
+    spanAmount.textContent = totalAnimes;
+
+    div.appendChild(spanText);
+    div.appendChild(spanAmount);
+    statsSection.prepend(div);
+}
+
+async function handleCreateAnimeSubmit(event) {
+    event.preventDefault();
+    const animeData = new FormData(event.target);
+    const title = animeData.get("title");
+    const status = animeData.get("status");
+    const score = animeData.get("score");
+    const progress = animeData.get("progress");
+    const anime = {
+        title,
+        status,
+        score,
+        progress
+    }
+
+    try {
+        const savedAnime = await createAnime(anime);
+        updateAnimesGroupedByStatus(savedAnime);
+        renderStats();
+        renderAnime(savedAnime);
+        event.target.reset();
+    } catch (error) {
+        console.log("Couldn't create anime: " + error.message);
+    }
 }
 
 function formatEnum(status) {
