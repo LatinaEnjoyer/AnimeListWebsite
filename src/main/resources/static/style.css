@@ -1,0 +1,177 @@
+:root {
+    --background: #1e1f22;
+    --surface: #323339;
+    --text: #ffffff;
+    --title-text: #9e9e9e;
+    --border: #000000;
+    --accent-orange: #CC7832;
+    --accent-green: #6A8759;
+    --accent-yellow: #FFC66D;
+    --accent-purple: #9876AA;
+    --accent-blue: #6897BB;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    color: var(--text);
+    background-color: var(--background);
+}
+
+main {
+    display: flex;
+    height: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+}
+
+/* filter */
+.filter {
+    padding: 1em;
+    margin: 1em 0 1em 1em;
+
+    box-sizing: border-box;
+    background-color: var(--surface);
+    border-radius: 1em;
+    border: 1px solid var(--border);
+}
+
+/* List */
+.anime-list-container {
+    padding: 1em;
+    height: 100%;
+    gap: 1em;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.title-header {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 10%;
+
+    background-color: var(--surface);
+    border-radius: 1em;
+    border: 1px solid var(--border);
+}
+
+.add-button-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+#add-btn {
+    padding: 1em;
+    background-color: var(--background);
+    color: var(--text);
+    border-radius: 1em;
+    border: 1px solid var(--border);
+}
+
+#add-btn:hover {
+    border: 1px solid var(--text);
+    cursor: pointer;
+}
+
+.space {
+    flex: 1;
+}
+
+.list-header-container {
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.anime-section {
+    overflow-y: auto;
+    height: 90%;
+
+    background-color: var(--surface);
+    border-radius: 1em;
+    border: 1px solid var(--border);
+}
+
+.anime-list {
+    list-style: none;
+    margin: 0;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    box-sizing: border-box;
+    width: 100%;
+    gap: 1em;
+    padding: 1em;
+}
+
+.anime-list li {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.anime-list article {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1em;
+    height: 15em;
+    overflow-y: hidden;
+
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: 1em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#anime-title {
+    margin: 0;
+
+    color: var(--title-text);
+    text-decoration: underline;
+    text-decoration-color: var(--text);
+}
+
+/* stats */
+.stats-section {
+    margin: 1em 1em 1em 0;
+    padding: 1em;
+
+    box-sizing: border-box;
+    background-color: var(--surface);
+    border-radius: 1em;
+    border: 1px solid var(--border);
+}
+
+.stats-header-container {
+    display: flex;
+    justify-content: center;
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+
+    gap: 1em;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 1em;
+}
