@@ -20,6 +20,10 @@ html, body {
     background-color: var(--background);
 }
 
+.hidden {
+    display: none !important;
+}
+
 main {
     display: flex;
     height: 100%;
