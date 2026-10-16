@@ -47,44 +47,51 @@
     </section>
 </main>
 
-<section class="hidden">
-    <div class="create-header-container">
-        <h2>Create Anime</h2>
-    </div>
-    <form class="create-anime-form">
-        <div class="input-container">
-            <section class="input-section">
-                <div class="input-box">
-                    <label for="title">Title:</label>
-                    <input required type="text" name="title" id="title">
-                </div>
-                <div class="input-box">
-                    <label for="status">Status:</label>
-                    <select required name="status" id="status">
-                        <option value="" selected disabled>Choose Status</option>
-                        <option value="COMPLETED">Completed</option>
-                        <option value="IN_PROGRESS">In Progress</option>
-                        <option value="DROPPED">Dropped</option>
-                        <option value="ON_HOLD">On Hold</option>
-                        <option value="PLANNING_TO_WATCH">Planning To Watch</option>
-                    </select>
-                </div>
-            </section>
-            <section class="input-section">
-                <div class="input-box">
-                    <label for="score">Score:</label>
-                    <input type="text" name="score" id="score">
-                </div>
-                <div class="input-box">
-                    <label for="progress">Progress:</label>
-                    <input type="text" name="progress" id="progress">
-                </div>
-            </section>
+<section class="create-box-container hidden">
+    <div class="create-box">
+        <div class="create-header-container">
+            <h2>Create Anime</h2>
         </div>
-        <section>
-            <button type="submit">Submit</button>
-        </section>
-    </form>
+        <hr>
+        <form class="create-anime-form">
+            <div class="input-container">
+                <section class="input-section">
+                    <div class="input-box">
+                        <label for="title">Title</label>
+                        <input required type="text" name="title" id="title">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="status">Status</label>
+                        <select required name="status" id="status">
+                            <option value="" selected disabled>Choose Status</option>
+                            <option value="COMPLETED">Completed</option>
+                            <option value="IN_PROGRESS">In Progress</option>
+                            <option value="DROPPED">Dropped</option>
+                            <option value="ON_HOLD">On Hold</option>
+                            <option value="PLANNING_TO_WATCH">Planning To Watch</option>
+                        </select>
+                    </div>
+                </section>
+
+                <section class="input-section">
+                    <div class="input-box">
+                        <label for="score">Score</label>
+                        <input type="number" name="score" id="score" placeholder="1-10">
+                    </div>
+
+                    <div class="input-box">
+                        <label for="progress">Progress</label>
+                        <input type="number" name="progress" id="progress">
+                    </div>
+                </section>
+            </div>
+
+            <section class="add-form-btn-container">
+                <button type="submit">Submit</button>
+            </section>
+        </form>
+    </div>
 </section>
 
 <script type="module" src="app.js"></script>
