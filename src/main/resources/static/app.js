@@ -48,7 +48,6 @@ function renderAnime(anime) {
     li.setAttribute("data-id", anime.id);
     const status = formatEnum(anime.status);
 
-
     const article = document.createElement("article");
     const divHeader = document.createElement("div");
     const h3 = document.createElement("h3");
