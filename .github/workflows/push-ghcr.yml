@@ -32,6 +32,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/${{ github.repository_owner }}/animelistwebsite:latest
+          tags: ghcr.io/latinaenjoyer/animelistwebsite:latest
           labels: |
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
