@@ -22,9 +22,8 @@ public class AnimeService {
     }
 
     public AnimeResponse createAnime(AnimeRequest request) {
-        Anime newAnime = AnimeMapper.toAnime(request);
-        animeRepository.save(newAnime);
-        return AnimeMapper.toResponse(newAnime);
+        Anime savedAnime = animeRepository.save(AnimeMapper.toAnime(request));
+        return AnimeMapper.toResponse(savedAnime);
     }
 
     public AnimeResponse getAnimeById(Long id) {
